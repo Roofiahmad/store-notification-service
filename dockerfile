@@ -1,5 +1,4 @@
-FROM golang:1.24.13-bookworm AS builder
-
+FROM golang:1.25.11-bookworm AS builder
 WORKDIR /app
 
 ENV APP_ENV=production
