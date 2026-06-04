@@ -20,6 +20,7 @@ ENV GIN_MODE=release
 
 WORKDIR /app
 COPY --from=builder /app/store-notification-service .
+COPY --from=builder /app/order_confirmation_template.html .
 
 USER guest
 
