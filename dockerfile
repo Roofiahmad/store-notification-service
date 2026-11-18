@@ -1,4 +1,4 @@
-FROM golang:1.25.11-bookworm AS builder
+FROM golang:1.27-bookworm AS builder
 WORKDIR /app
 
 ENV APP_ENV=production
@@ -11,9 +11,9 @@ COPY . .
 
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags="-s -w" -o store-notification-service .
 
-FROM alpine:3.20
+FROM alpine:3.23
 
-RUN apk add --no-cache ca-certificates tzdata
+RUN apk --no-cache upgrade && apk add --no-cache ca-certificates tzdata
 
 ENV APP_ENV=production
 ENV GIN_MODE=release
